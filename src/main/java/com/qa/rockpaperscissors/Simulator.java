@@ -7,7 +7,7 @@ public class Simulator {
 	private Random rand = new Random();
 
 	public boolean playGame(Shape choice) {
-		int randNum = this.rand.nextInt(2);
+		int randNum = this.rand.nextInt(3);
 		Shape result;
 
 		// Randomise CPU shape
