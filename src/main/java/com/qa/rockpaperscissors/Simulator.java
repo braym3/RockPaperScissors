@@ -6,33 +6,22 @@ public class Simulator {
 
 	private Random rand = new Random();
 
-	public boolean playGame(Shape choice) {
+	public Result playGame(Shape choice) {
 		int randNum = this.rand.nextInt(3);
-		Shape result;
+		Shape cpu;
 
 		// Randomise CPU shape
 		if (randNum == 0) {
-			result = Shape.ROCK;
+			cpu = Shape.ROCK;
 		} else if (randNum == 1) {
-			result = Shape.PAPER;
+			cpu = Shape.PAPER;
 		} else {
-			result = Shape.SCISSORS;
+			cpu = Shape.SCISSORS;
 		}
 
-		System.out.println("YOU: " + choice + " - CPU: " + result);
+		System.out.println("YOU: " + choice + " - CPU: " + cpu);
 		// Find winner
-		return won(choice, result);
+		return choice.beats(cpu);
 	}
 
-	public boolean won(Shape choice, Shape result) {
-		// If choice is rock - wins to scissors, loses to paper
-		if (choice == Shape.ROCK)
-			return result == Shape.SCISSORS;
-		// If choice is paper - wins to rock, loses to scissors
-		else if (choice == Shape.PAPER)
-			return result == Shape.ROCK;
-		// If choice is scissors - wins to paper, loses to rock
-		else
-			return result == Shape.PAPER;
-	}
 }
